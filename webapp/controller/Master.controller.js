@@ -25,15 +25,18 @@ sap.ui.define([
 		},
 		loadCompData: function (product) {
 			var that = this;
+			this.getView().setBusy(true);
 			jQuery.ajax({
 				type: "Get",
 				url: "https://scoring-engine.cfapps.sap.hana.ondemand.com/productDetails?product=" + product,
 				success: function (data) {
 					that.getView().getModel("subProductModel").setData(data);
 					that.getView().getModel("subProductModel").refresh(true);
+						that.getView().setBusy(false);
 				},
 				error: function (data) {
 					console.log(data);
+							that.getView().setBusy(false);
 				}
 			});
 		},
@@ -90,6 +93,12 @@ sap.ui.define([
 			var ticketId = oEvent.getSource().getProperty("title");
 			this.oRouter.navTo("ticketDetails", {
 				ticketId: ticketId
+			});
+		},
+		subcomponentPress: function (oEvent) {
+			var component = oEvent.getSource().getProperty("title");
+			this.oRouter.navTo("handlers", {
+				componentId: component
 			});
 		}
 

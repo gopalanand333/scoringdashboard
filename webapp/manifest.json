@@ -59,9 +59,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -73,25 +75,33 @@
 				"controlId": "app",
 				"clearControlAggregation": false
 			},
-			"routes": [{
-				"name": "Routehome",
-				"pattern": "Routehome",
-				"target": [
-					"Targethome"
-				]
-			}, {
-				"name": "master",
-				"pattern": "product/{productId}",
-				"target": [
-					"Master"
-				]
-			}, {
-				"name": "ticketDetails",
-				"pattern": "ticketDetails/{ticketId}",
-				"target": [
-					"ticketDetails"
-				]
-			}],
+			"routes": [
+				{
+					"name": "Routehome",
+					"pattern": "Routehome",
+					"target": [
+						"Targethome"
+					]
+				},
+				{
+					"name": "master",
+					"pattern": "product/{productId}",
+					"target": [
+						"Master"
+					]
+				},
+				{
+					"name": "ticketDetails",
+					"pattern": "ticketDetails/{ticketId}",
+					"target": [
+						"ticketDetails"
+					]
+				},
+				{
+					"name": "handlers", "pattern": "handlers/{componentId}",
+					"target": ["handlers"]
+				}
+			],
 			"targets": {
 				"Targethome": {
 					"viewType": "XML",
@@ -106,6 +116,10 @@
 				"ticketDetails": {
 					"viewType": "XML",
 					"viewName": "ticketDetails"
+				},
+				"handlers": {
+					"viewType": "XML",
+					"viewName": "handlers"
 				}
 			}
 		}

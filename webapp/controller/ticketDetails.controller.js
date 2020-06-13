@@ -18,7 +18,7 @@ sap.ui.define([
 		},
 		_onObjectMatched: function (oEvent) {
 			this.ticketId = oEvent.getParameter("arguments").ticketId;
-
+			this.getView().setBusy(true);
 			this.loadTicketDetails(this.ticketId);
 		},
 		loadTicketDetails: function (ticketId) {
@@ -30,9 +30,12 @@ sap.ui.define([
 					that.aggeregateData(data);
 					that.getView().getModel("ticketDetailsModel").setData(data);
 					that.getView().getModel("ticketDetailsModel").refresh(true);
+					that.getView().setBusy(false);
 				},
 				error: function (data) {
 					console.log(data);
+					sap.m.MessageToast.show("Error While Loading Data");
+					that.getView().setBusy(false);
 				}
 			});
 		},
@@ -48,7 +51,7 @@ sap.ui.define([
 			return;
 		},
 		stateFormatter: function (s) {
-			var score = parseFloat(s.toPrecision(2));
+			var score = parseFloat(parseFloat(s.toPrecision(2)));
 			var src;
 			if (score > 1) {
 				src = "Success";

@@ -8,7 +8,7 @@
 						<l:HorizontalLayout content="{subProductModel>/}" class="sapUiMediumMargins">
 							<f:Card class="sapUiMediumMargin" width="350px">
 								<f:header>
-									<card:Header title="{subProductModel>SUB_COMP}" press="productPress"/>
+									<card:Header title="{subProductModel>SUB_COMP}" press="subcomponentPress"/>
 								</f:header>
 								<f:content>
 									<HBox alignItems="Center" class="sapUiMediumMargins">
