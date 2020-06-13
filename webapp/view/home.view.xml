@@ -1,0 +1,55 @@
+<mvc:View controllerName="com.ag.scoring-dashboard.controller.home" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns:f="sap.f" xmlns:card="sap.f.cards" xmlns:suite="sap.suite.ui.microchart" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="Customer Engagement Scoring Dashboard" showHeader="true" titleLevel="H6">
+					<content>
+						<l:VerticalLayout id="containerLayout" width="100%">
+							<l:BlockLayout id="BlockLayout" background="Dashboard">
+								<l:BlockLayoutRow accentCells="Accent1">
+									<l:BlockLayoutCell id="Accent1" width="-1" title="Customer Satisfaction Score">
+										<HBox alignItems="Center">
+											<Title id="scoreTitle" level="H6" class="title"/>
+											<Image id="scoreEmoji" width="10rem" height="10rem"></Image>
+										</HBox>
+									</l:BlockLayoutCell>
+									<l:BlockLayoutCell title="Trend in last 1 week">
+										<HBox class="sapUiMediumMargins" height="100%">
+											<suite:InteractiveLineChart selectionChanged="selectionChanged" id="microchart"  precedingPoint="0.1" points="{dailyAvgModel>/}" class="sapUiMediumMargins">
+												<suite:points>
+													<suite:InteractiveLineChartPoint value="{dailyAvgModel>SCORE}" label="{dailyAvgModel>DATE}" color="{path:'dailyAvgModel>SCORE', formatter:'.microShartFormatter'}"/>
+												</suite:points>
+											</suite:InteractiveLineChart>
+										</HBox>
+									</l:BlockLayoutCell>
+								</l:BlockLayoutRow>
+							</l:BlockLayout>
+						</l:VerticalLayout>
+						<Panel headerText="Product Score - Past 1 Month">
+							<l:HorizontalLayout content="{componentModel>/}" class="sapUiMediumMargins">
+									<f:Card class="sapUiMediumMargin" width="350px" >
+									<f:header>
+										<card:Header title="{componentModel>COMPID}" press="productPress"/>
+									</f:header>
+									<f:content>
+										<HBox alignItems="Center" class="sapUiMediumMargins" >
+											<Title text="{componentModel>SCORE}" class="title"/>
+											<Image src="{ path: 'componentModel>SCORE', formatter: '.formatImages' }" width="10rem" height="10rem"></Image>
+										</HBox>
+									</f:content>
+								</f:Card>
+							</l:HorizontalLayout>
+							
+						</Panel>
+						<List items="{ticketModel>/}" headerText="Most Recent Ticket Status">
+							<ObjectListItem title="{ticketModel>ID}" type="Active" press="navToTicketDetails" numberState="{ path: 'ticketModel>SCORE', formatter: '.stateFormatter' }" 
+							number="{ticketModel>SCORE}" highlight="{ path: 'ticketModel>SCORE', formatter: '.stateFormatter' }">
+							</ObjectListItem>
+						</List>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

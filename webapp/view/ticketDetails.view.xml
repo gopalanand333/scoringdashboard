@@ -1,0 +1,54 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.ag.scoring-dashboard.controller.ticketDetails" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="Ticket Details" navButtonPress="navBack" showNavButton="true">
+				<content>
+					<ObjectHeader id="ticketDetails" responsive="true"  showMarkers="false"
+						backgroundDesign="Translucent" class="sapUiResponsivePadding--header">
+						<ObjectAttribute title="Start Date Time" id="recentConv" text="Devember 2, 10:21PM"/>
+						<statuses>
+							<ObjectStatus title="Customer Engagement Score" id="avgTicketScore" />
+						</statuses>
+					</ObjectHeader>
+					<Table inset="false" items="{ticketDetailsModel>/}">
+						<infoToolbar>
+							<OverflowToolbar>
+								<Label text="Activities on this ticket"/>
+							</OverflowToolbar>
+						</infoToolbar>
+						<columns>
+							<Column>
+								<Text text="Conversation Id"/>
+							</Column>
+							<Column >
+								<Text text="Date Time"/>
+							</Column>
+							<Column>
+								<Text text="Handler Name"/>
+							</Column>
+							<Column>
+								<Text text="Score"/>
+							</Column>
+							<Column>
+								<Text text="Component Name"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<ObjectIdentifier title="{ticketDetailsModel>CONV_ID}"/>
+									<Text text="{path : 'ticketDetailsModel>CONV_TIME', formatter:'.dateFormatter'}"/>
+									<Text text="{ticketDetailsModel>HANDLER_ID}"/>
+									<ObjectNumber number="{ path: 'ticketDetailsModel>SCORE', formatter: '.numberFormatter' }" 
+										state="{ path: 'ticketDetailsModel>SCORE', formatter: '.stateFormatter' }"/>
+									<Text text="{ticketDetailsModel>SUBCOMPONENT}"></Text>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

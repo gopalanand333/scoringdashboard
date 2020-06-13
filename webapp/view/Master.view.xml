@@ -1,0 +1,31 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.ag.scoring-dashboard.controller.Master"
+	xmlns:f="sap.f" xmlns:card="sap.f.cards" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="Product Level Performance Details" navButtonPress="navBack" showNavButton="true">
+				<content>
+					<Panel headerText="Product Components" id="subproductPanel">
+						<l:HorizontalLayout content="{subProductModel>/}" class="sapUiMediumMargins">
+							<f:Card class="sapUiMediumMargin" width="350px">
+								<f:header>
+									<card:Header title="{subProductModel>SUB_COMP}" press="productPress"/>
+								</f:header>
+								<f:content>
+									<HBox alignItems="Center" class="sapUiMediumMargins">
+										<Title text="{subProductModel>SCORE}" class="title"/>
+										<Image src="{ path: 'subProductModel>SCORE', formatter: '.formatImages' }" width="10rem" height="10rem"></Image>
+									</HBox>
+								</f:content>
+							</f:Card>
+						</l:HorizontalLayout>
+					</Panel>
+					<List items="{componentTickets>/}" headerText="Most Recent Ticket Status on this product">
+						<ObjectListItem title="{componentTickets>TICKET_ID}" type="Active" press="navToTicketDetails"
+							numberState="{ path: 'componentTickets>SCORE', formatter: '.stateFormatter' }" number="{componentTickets>SCORE}"
+							highlight="{ path: 'componentTickets>SCORE', formatter: '.stateFormatter' }"></ObjectListItem>
+					</List>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
