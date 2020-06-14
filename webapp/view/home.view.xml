@@ -43,7 +43,7 @@
 							
 						</Panel>
 						<List items="{ticketModel>/}" headerText="Most Recent Ticket Status">
-							<ObjectListItem title="{ticketModel>ID}" type="Active" press="onListItemPress" numberState="{ path: 'ticketModel>SCORE', formatter: '.stateFormatter' }" 
+							<ObjectListItem title="{ticketModel>ID}" type="Active" press="navToTicketDetails" numberState="{ path: 'ticketModel>SCORE', formatter: '.stateFormatter' }" 
 							number="{ticketModel>SCORE}" highlight="{ path: 'ticketModel>SCORE', formatter: '.stateFormatter' }">
 							</ObjectListItem>
 						</List>

@@ -12,7 +12,7 @@
 								</f:header>
 								<f:content>
 									<HBox class="sapUiMediumMargin">
-										<ObjectStatus class="sapMObjectStatusLarge" title="Score" text="{handlerModel>SCORE}" state="{ path: 'handlerModel>SCORE', formatter: '.stateFormatter' }" icon="sap-icon://status-positive"/>
+										<ObjectStatus class="sapMObjectStatusLarge" title="Score" text="{handlerModel>SCORE}" state="{ path: 'handlerModel>SCORE', formatter: '.stateFormatter' }"/>
 									</HBox>
 								</f:content>
 							</f:Card>
